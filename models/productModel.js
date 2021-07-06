@@ -39,6 +39,15 @@ const productSchema = mongoose.Schema(
 			required: true,
 			trim: true,
 		},
+		subCategory: {
+			type: String,
+		},
+		tag: {
+			type: String,
+		},
+		brand: {
+			type: String,
+		},
 
 		status: {
 			type: String,
@@ -48,10 +57,6 @@ const productSchema = mongoose.Schema(
 		wishlisted: {
 			type: Number,
 			default: 0,
-		},
-
-		subCategory: {
-			type: String,
 		},
 
 		description: {
@@ -95,7 +100,7 @@ const productSchema = mongoose.Schema(
 		countInStock: {
 			type: Number,
 			required: true,
-			default: 0,
+			default: 5,
 		},
 		totalSold: {
 			type: Number,
