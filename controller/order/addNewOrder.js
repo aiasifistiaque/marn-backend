@@ -7,10 +7,6 @@ import Product from '../../models/productModel.js';
 const addNewOrder = asyncHandler(async (req, res) => {
 	const { orderItems } = req.body;
 
-	console.log(req.body);
-
-	//console.log(req.body);
-
 	if (orderItems && orderItems.length === 0) {
 		return res.status(400).json('no order items');
 	} else {
@@ -27,7 +23,7 @@ const addNewOrder = asyncHandler(async (req, res) => {
 
 		orderItems.map(async item => {
 			try {
-				const prod = await Product.findById(item.product);
+				const prod = await Product.findById(item._id);
 				prod.countInStock = prod.countInStock - item.qty;
 				prod.totalSold = prod.totalSold + item.qty;
 				await prod.save();
@@ -42,7 +38,7 @@ const addNewOrder = asyncHandler(async (req, res) => {
 				'user',
 				'id name email'
 			);
-			sendMail(findOrder);
+			//sendMail(findOrder);
 			sendMailToCustomer(findOrder);
 			//sconsole.log(findOrder);
 			res.status(201).json(createdOrder);
