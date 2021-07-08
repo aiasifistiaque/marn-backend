@@ -39,7 +39,7 @@ const addNewOrder = asyncHandler(async (req, res) => {
 				'id name email'
 			);
 			//sendMail(findOrder);
-			sendMailToCustomer(findOrder);
+			//sendMailToCustomer(findOrder);
 			//sconsole.log(findOrder);
 			res.status(201).json(createdOrder);
 		} catch (e) {
