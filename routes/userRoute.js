@@ -23,6 +23,14 @@ router.route('/getuserbymail').post(protect, admin, getUserByMail);
 
 router.route('/editrole').post(protect, admin, editRole);
 
+/**Edit user
+ *
+ * @type {function}
+ *
+ * @param {string} name
+ * @param {string} phone
+ * @return {object} user
+ */
 router.route('/edituser').put(protect, editUser);
 
 router.route('/sendotp').post(sendOtp);

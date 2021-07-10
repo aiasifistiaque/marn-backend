@@ -1,7 +1,7 @@
 import Product from '../../models/productModel.js';
 import asyncHandler from 'express-async-handler';
 
-const perPage = 50;
+const perPage = 20;
 
 export const getAllCategories = asyncHandler(async (req, res) => {
 	let sort = '-createdAt';

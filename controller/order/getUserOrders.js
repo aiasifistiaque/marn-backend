@@ -1,9 +1,21 @@
 import asyncHandler from 'express-async-handler';
 import Order from '../../models/orderModel.js';
 
+/**
+ * Get orders from user
+ *
+ * @type {function}
+ *
+ * @param {string} status [Past,Current]
+ * @param {number} page page number
+ * @param {string} perPage number of queries per page
+ * @param {string} authtoken in header
+ * @return {object<array,string>} [orders],count
+ */
+
 const getUserOrders = asyncHandler(async (req, res) => {
 	let select = { status: { $nin: ['completed,archived,cancelled'] } };
-	const perPage = 10;
+	const perPage = req.body.perPage || 10;
 	const page = req.body.page || 0;
 
 	try {

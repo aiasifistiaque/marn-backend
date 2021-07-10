@@ -8,7 +8,7 @@ const editUser = asyncHandler(async (req, res) => {
 		const user = await User.findById(req.user._id).select(['-password']);
 		user.name = name;
 		user.phone = phone;
-		const savedUser = user.save();
+		const savedUser = await user.save();
 		res.status(200).json(savedUser);
 	} catch (e) {
 		console.log(e);
