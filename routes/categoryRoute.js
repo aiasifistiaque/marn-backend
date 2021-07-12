@@ -7,6 +7,7 @@ import {
 	getProductsBySubCategory,
 	getProductsByTag,
 	getTAgs,
+	getSubCategoryList,
 } from '../controller/product/getAllCategories.js';
 
 const router = express.Router();
@@ -22,10 +23,15 @@ router.get('/', getAllCategories);
 
 /**
  * /api/categories
- * Get names of sub categories
+ * Get names and images of sub categories
+ * and tags
+ * @param {string} id name of sub/tag
+ * @param {string} type type [sub/tag]
+ * @returns {Object} list of all tag/sub
+ *
  * @returns {Promise} array of all sub categories
  */
-router.get('/sub', getSubCategories);
+router.post('/sub', getSubCategoryList);
 
 /**
  * /api/categories
