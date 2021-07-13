@@ -11,9 +11,11 @@ const editProduct = asyncHandler(async (req, res) => {
 		price,
 		category,
 		subCategory,
+		tag,
 		status,
 	} = req.body;
 	console.log(req.body);
+
 	try {
 		const product = await Product.findById(req.params.id);
 		product.name = name;
@@ -23,9 +25,11 @@ const editProduct = asyncHandler(async (req, res) => {
 		product.price = price || 0;
 		product.category = category || '';
 		product.subCategory = subCategory || '';
+		product.tag = tag || '';
 		product.countInStock = stock || 0;
 		product.status = status || '';
-		const saveProd = product.save();
+
+		const saveProd = await product.save();
 		res.status(200).json(saveProd);
 	} catch (e) {
 		res.status(500).json({ msg: e.message });
