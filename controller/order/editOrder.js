@@ -8,6 +8,7 @@ const editOrder = asyncHandler(async (req, res) => {
 		const order = await Order.findById(id).populate('user', 'id name email');
 		order.status = status;
 		order.isPaid = paid;
+
 		const saveOrder = await order.save();
 		res.status(200).json(saveOrder);
 	} catch (e) {
